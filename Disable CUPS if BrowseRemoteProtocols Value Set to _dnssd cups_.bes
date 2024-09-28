@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<BES xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="BES.xsd">
+	<Fixlet>
+		<Title>Disable CUPS if BrowseRemoteProtocols Value Set to "dnssd cups"</Title>
+		<Description><![CDATA[This Fixlet will stop and disable the cups-browsed service on Linux systems. It is relevant on Linux systems where the BrowseRemoteProtocols line in the&nbsp;<FONT color=#008080 size=2><FONT color=#008080 size=2>/etc/cups/cups-browsed.conf</FONT></FONT> file is set to the value:<BR><BR>dnssd cups ]]></Description>
+		<Relevance>exists process "cups-browsed" AND exists lines containing "BrowseRemoteProtocols dnssd cups" of file "/etc/cups/cups-browsed.conf" </Relevance>
+		<Category></Category>
+		<Source>Internal</Source>
+		<SourceID></SourceID>
+		<SourceReleaseDate>2024-09-27</SourceReleaseDate>
+		<SourceSeverity></SourceSeverity>
+		<CVENames></CVENames>
+		<SANSID></SANSID>
+		<MIMEField>
+			<Name>x-fixlet-modification-time</Name>
+			<Value>Sat, 28 Sep 2024 09:19:56 +0000</Value>
+		</MIMEField>
+		<Domain>BESC</Domain>
+		<DefaultAction ID="Action1">
+			<Description>
+				<PreLink>Click </PreLink>
+				<Link>here</Link>
+				<PostLink> to deploy this action.</PostLink>
+			</Description>
+			<ActionScript MIMEType="application/x-sh">#!/bin/sh
+# Enter your action script here
+systemctl stop cups-browsed
+systemctl disable cups-browsed
+
+</ActionScript>
+		</DefaultAction>
+	</Fixlet>
+</BES>
